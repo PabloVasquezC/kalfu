@@ -5,6 +5,7 @@ import { Team } from '@/components/sections/Team';
 import { Services } from '@/components/sections/Services';
 import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/layout/Footer';
+import { N8nChat } from '@/components/N8n';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Services />
       <Contact />
       <Footer />
+      <N8nChat />
     </main>
   );
 }
