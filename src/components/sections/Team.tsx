@@ -1,6 +1,16 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import {
+    motion,
+    useScroll,
+    useTransform,
+    useSpring,
+    useMotionValue,
+    useVelocity,
+    useAnimationFrame
+} from 'framer-motion';
+import { wrap } from '@motionone/utils';
 import Image from 'next/image';
 
 const teamImages = [
@@ -20,8 +30,35 @@ const teamImages = [
 ];
 
 export const Team = () => {
-    // Duplicate images for seamless infinite scroll
-    const marqueeImages = [...teamImages, ...teamImages];
+    // Duplicate images for seamless infinite scroll (we need enough duplicates to fill screen + buffer)
+    const baseImages = [...teamImages, ...teamImages, ...teamImages];
+
+    const baseX = useMotionValue(0);
+    const { scrollY } = useScroll();
+    const scrollVelocity = useVelocity(scrollY);
+    const smoothVelocity = useSpring(scrollVelocity, {
+        damping: 50,
+        stiffness: 400
+    });
+    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+        clamp: false
+    });
+
+    // Control parameters
+    const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+
+    const directionFactor = useRef<number>(1);
+
+    useAnimationFrame((t, delta) => {
+        let moveBy = directionFactor.current * 0.5 * (delta / 1000); // reduced base speed from 5 to 0.5
+
+        // Add scroll velocity effect if desired, or just keep it steady
+        if (velocityFactor.get() !== 0) {
+            moveBy += directionFactor.current * moveBy * velocityFactor.get();
+        }
+
+        baseX.set(baseX.get() + moveBy);
+    });
 
     return (
         <section id="team" className="py-24 bg-[var(--kalfu-light)] overflow-hidden">
@@ -41,17 +78,29 @@ export const Team = () => {
                 </motion.div>
             </div>
 
-            <div className="w-full overflow-hidden">
+            <div className="w-full overflow-hidden cursor-grab active:cursor-grabbing">
                 <motion.div
                     className="flex gap-6 w-max"
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                        repeat: Infinity,
-                        ease: "linear",
-                        duration: 120
+                    style={{ x }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    onDragEnd={() => {
+                        // Keep the motion going? - handled by animation frame reading direction
+                    }}
+                    onDrag={(event, info) => {
+                        // Change direction based on drag
+                        if (info.delta.x > 0) {
+                            directionFactor.current = 1;
+                        } else if (info.delta.x < 0) {
+                            directionFactor.current = -1;
+                        }
+
+                        // Add drag velocity to base movement
+                        const dragVelocity = info.delta.x * 0.05;
+                        baseX.set(baseX.get() + dragVelocity);
                     }}
                 >
-                    {marqueeImages.map((image, index) => (
+                    {baseImages.map((image, index) => (
                         <motion.div
                             key={index}
                             className="w-[300px] h-[400px] relative rounded-2xl overflow-hidden shadow-lg flex-shrink-0"
@@ -61,7 +110,7 @@ export const Team = () => {
                                 src={image}
                                 alt={`Equipo Kalfu ${index + 1}`}
                                 fill
-                                className="object-cover"
+                                className="object-cover pointer-events-none" // prevent image dragging ghost
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[var(--kalfu-blue)]/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
                         </motion.div>

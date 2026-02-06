@@ -44,7 +44,7 @@ export const Navbar = () => {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-[var(--kalfu-blue)] hover:text-[var(--kalfu-calypso)] transition-colors"
+                            className="relative text-sm font-medium text-[var(--kalfu-blue)] hover:text-[var(--kalfu-calypso)] transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[var(--kalfu-calypso)] hover:after:w-full after:transition-all after:duration-300"
                         >
                             {link.name}
                         </Link>
