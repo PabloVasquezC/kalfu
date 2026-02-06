@@ -20,6 +20,9 @@ const dancingScript = Dancing_Script({
 export const metadata: Metadata = {
   title: "Kalfu Terapias Holísticas | Bienestar y Sanación en Curicó",
   description: "Espacio de sanación y bienestar integral en Curicó. Reiki, Flores de Bach, Sonoterapia y Masajes Terapéuticos para tu equilibrio emocional y físico.",
+  icons: {
+    icon: '/logo-emblem.png',
+  },
 };
 
 export default function RootLayout({
