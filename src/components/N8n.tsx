@@ -15,11 +15,11 @@ export function N8nChat() {
         loadPreviousSession: true,
         showWelcomeScreen: false,
         initialMessages: [
-          "👋 Hola! Soy el asistente virtual de COOCAM y estoy aquí para ayudarte."
+          "👋 Hola! Soy el asistente virtual de Kalfú y estoy aquí para ayudarte."
         ],
         i18n: {
           en: {
-            title: "COOCAM",
+            title: "Kalfú",
             subtitle: "Asistencia Virtual",
             inputPlaceholder: "Escribe aqui..",
           },
