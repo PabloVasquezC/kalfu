@@ -63,8 +63,11 @@ export const Footer = () => {
                 </div>
             </div>
 
-            <div className="container-custom mt-16 pt-8 border-t border-white/10 text-center text-xs text-slate-500">
+            <div className="container-custom mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
                 <p>&copy; {new Date().getFullYear()} Kalfú Terapias Holísticas. Todos los derechos reservados.</p>
+                <p>
+                    Sitio web construido por <a href="https://fluxia.cl" target="_blank" rel="noopener noreferrer" className="text-[var(--kalfu-calypso)] hover:underline font-medium">Fluxia</a>
+                </p>
             </div>
         </footer>
     );

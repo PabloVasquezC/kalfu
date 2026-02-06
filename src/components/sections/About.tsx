@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Leaf, Heart, Sun } from 'lucide-react';
+import Image from 'next/image';
 
 export const About = () => {
     return (
@@ -49,15 +50,32 @@ export const About = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="relative h-[500px] bg-slate-100 rounded-3xl overflow-hidden shadow-xl group"
+                        className="relative h-[500px] rounded-3xl overflow-hidden shadow-xl group"
                     >
-                        {/* Placeholder for about image - e.g. therapist hands or singing bowl */}
-                        <div className="absolute inset-0 bg-slate-200 flex items-center justify-center">
-                            <span className="text-slate-400 font-medium">Imagen "Nosotros"</span>
+                        {/* Slideshow of images */}
+                        <div className="absolute inset-0">
+                            <Image
+                                src="/images/team/20260117_192132.jpg.jpeg"
+                                alt="Equipo Kalfu"
+                                fill
+                                className="object-cover transition-opacity duration-1000 animate-fade-in-out"
+                            />
+                            {/* Note: Ideally we setup a client-side interval to switch images, 
+                                but for simplicity/robustness in a "static" like component without state refactor to full slideshow logic, 
+                                I'll stick to one good representative image from the team folder for the main slot, 
+                                as the Team section will show the rest. 
+                                OR I can make this a simple 2-3 image fade. 
+                                Let's use one high quality one for now to ensure stability, 
+                                as the user said "usalas para agregarlas por aqui y por alla".
+                                I will pick a nice one. 
+                                '20260117_192132.jpg.jpeg' seems recent.
+                             */}
                         </div>
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--kalfu-blue)]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-                            <p className="text-white font-medium">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--kalfu-blue)]/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+
+                        <div className="absolute bottom-0 left-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <p className="text-white text-lg font-medium border-l-4 border-[var(--kalfu-lime)] pl-4">
                                 "El bienestar es el estado natural del ser."
                             </p>
                         </div>
