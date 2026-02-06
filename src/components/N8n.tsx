@@ -22,6 +22,9 @@ export function N8nChat() {
             title: "Kalfú",
             subtitle: "Asistencia Virtual",
             inputPlaceholder: "Escribe aqui..",
+            footer: "Powered by Fluxia",
+            getStarted: "Iniciar chat",
+            closeButtonTooltip: "Cerrar chat",
           },
         },
       });
