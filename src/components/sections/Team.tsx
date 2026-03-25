@@ -13,7 +13,13 @@ import {
 import { wrap } from '@motionone/utils';
 import Image from 'next/image';
 
-const teamImages = [
+import { urlFor } from '@/sanity/lib/image';
+
+interface TeamProps {
+    data?: any;
+}
+
+const defaultImages = [
     '/images/team/20241124_163619.jpg.jpeg',
     '/images/team/20241124_163727.jpg.jpeg',
     '/images/team/20241124_163728.jpg.jpeg',
@@ -29,9 +35,16 @@ const teamImages = [
     '/images/team/IMG-20250903-WA0058.jpg.jpeg',
 ];
 
-export const Team = () => {
-    // Duplicate images for seamless infinite scroll (we need enough duplicates to fill screen + buffer)
-    const baseImages = [...teamImages, ...teamImages, ...teamImages];
+export const Team = ({ data }: TeamProps) => {
+    const title = data?.title || "Nuestro Equipo";
+    const description = data?.description || "Conoce a las personas que hacen posible la magia en Kalfu. Un equipo dedicado a tu bienestar.";
+    
+    // Convert Sanity images to URLs or use defaults
+    const sanityImages = data?.images?.map((img: any) => urlFor(img).url()) || [];
+    const displayImages = sanityImages.length > 0 ? sanityImages : defaultImages;
+
+    // Duplicate images for seamless infinite scroll
+    const baseImages = [...displayImages, ...displayImages, ...displayImages];
 
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
@@ -70,10 +83,10 @@ export const Team = () => {
                     className="text-center"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold text-[var(--kalfu-blue)] mb-6 font-[var(--font-handwriting)]">
-                        Nuestro Equipo
+                        {title}
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Conoce a las personas que hacen posible la magia en Kalfu. Un equipo dedicado a tu bienestar.
+                        {description}
                     </p>
                 </motion.div>
             </div>

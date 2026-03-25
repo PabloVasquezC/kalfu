@@ -4,7 +4,23 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export const Hero = () => {
+import { urlFor } from '@/sanity/lib/image';
+
+interface HeroProps {
+    data?: any;
+}
+
+export const Hero = ({ data }: HeroProps) => {
+    const titleLine1 = data?.titleLine1 || "Encuentra tu centro";
+    const titleLine2 = data?.titleLine2 || "y conecta con tu energía.";
+    const description = data?.description || "Un espacio de sanación en Curicó. Reiki, Flores de Bach y Sonoterapia diseñados para restaurar tu equilibrio emocional y físico.";
+    const welcomeTag = data?.welcomeTag || "Bienvenido a Kalfú Terapias Holísticas";
+    const primaryButtonText = data?.primaryButtonText || "Agendar ahora";
+    const primaryButtonLink = data?.primaryButtonLink || "#contact";
+    const secondaryButtonText = data?.secondaryButtonText || "Conocer más";
+    const secondaryButtonLink = data?.secondaryButtonLink || "#about";
+    const imageUrl = data?.image ? urlFor(data.image).url() : "/logo-emblem.png";
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#f8fafc] via-[#e0f2fe] to-[#bae6fd]/30">
             {/* Abstract Background Element */}
@@ -19,28 +35,28 @@ export const Hero = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <span className="inline-block px-4 py-1.5 rounded-full bg-white text-[var(--kalfu-blue)] text-lg md:text-xl font-[var(--font-handwriting)] font-bold shadow-sm mb-6 border border-blue-50">
-                            Bienvenido a Kalfú Terapias Holísticas
+                            {welcomeTag}
                         </span>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[var(--kalfu-blue)] leading-[1.1] mb-6 tracking-tight">
-                            Encuentra tu centro <br className="hidden md:block" />
-                            <span className="text-[var(--kalfu-calypso)]">y conecta con tu energía.</span>
+                            {titleLine1} <br className="hidden md:block" />
+                            <span className="text-[var(--kalfu-calypso)]">{titleLine2}</span>
                         </h1>
                         <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-                            Un espacio de sanación en Curicó. Reiki, Flores de Bach y Sonoterapia diseñados para restaurar tu equilibrio emocional y físico.
+                            {description}
                         </p>
                         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
                             <Link
-                                href="#contact"
+                                href={primaryButtonLink}
                                 className="group px-8 py-3.5 rounded-full bg-[var(--kalfu-blue)] text-white font-semibold shadow-lg shadow-blue-900/10 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center gap-2"
                             >
-                                Agendar ahora
+                                {primaryButtonText}
                                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </Link>
                             <Link
-                                href="#about"
+                                href={secondaryButtonLink}
                                 className="px-8 py-3.5 rounded-full bg-white text-[var(--kalfu-blue)] font-semibold shadow-sm border border-slate-100 hover:bg-slate-50 transition-colors"
                             >
-                                Conocer más
+                                {secondaryButtonText}
                             </Link>
                         </div>
                     </motion.div>
@@ -61,8 +77,8 @@ export const Hero = () => {
                             {/* Main Emblem Image */}
                             <div className="relative w-3/4 h-3/4">
                                 <img
-                                    src="/logo-emblem.png"
-                                    alt="Kalfú Terapias Holísticas Emblem"
+                                    src={imageUrl}
+                                    alt="Hero Content"
                                     className="object-contain w-full h-full drop-shadow-xl"
                                 />
                             </div>

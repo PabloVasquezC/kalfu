@@ -4,7 +4,18 @@ import { motion } from 'framer-motion';
 import { Send, Instagram, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export const Contact = () => {
+interface ContactProps {
+    data?: any;
+}
+
+export const Contact = ({ data }: ContactProps) => {
+    const title = data?.title || "¿Listo para iniciar tu sanación?";
+    const description = data?.description || "Reserva tu hora o consúltanos cualquier duda. Estamos aquí para acompañarte en tu proceso de bienestar.";
+    const whatsapp = data?.whatsappNumber || "56912345678";
+    const instagram = data?.instagramUrl || "#";
+    const facebook = data?.facebookUrl || "#";
+    const address = data?.address || "Atendemos en Curicó, Región del Maule.";
+
     return (
         <section id="contact" className="py-24 bg-white relative overflow-hidden">
             {/* Decorative */}
@@ -18,34 +29,34 @@ export const Contact = () => {
                     transition={{ duration: 0.8 }}
                 >
                     <h2 className="text-4xl md:text-6xl font-bold text-[var(--kalfu-blue)] mb-8 font-[var(--font-handwriting)]">
-                        ¿Listo para iniciar tu sanación?
+                        {title}
                     </h2>
                     <p className="text-xl text-slate-600 mb-12 leading-relaxed">
-                        Reserva tu hora o consúltanos cualquier duda.<br className="hidden sm:inline" /> Estamos aquí para acompañarte en tu proceso de bienestar.
+                        {description}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-6 justify-center">
                         <Button
                             size="lg"
                             className="w-full sm:w-auto gap-3 text-lg px-8 py-6 shadow-xl shadow-blue-500/20 hover:shadow-2xl hover:-translate-y-1 bg-[var(--kalfu-calypso)]"
-                            onClick={() => window.open('https://wa.me/56912345678', '_blank')}
+                            onClick={() => window.open(`https://wa.me/${whatsapp}`, '_blank')}
                         >
                             <Send size={20} />
                             Escríbenos al WhatsApp
                         </Button>
 
                         <div className="flex gap-4">
-                            <Button variant="outline" size="icon" className="w-14 h-14 rounded-full border-slate-200 text-slate-500 hover:text-[var(--kalfu-blue)] hover:border-[var(--kalfu-blue)]" onClick={() => window.open('#', '_blank')}>
+                            <Button variant="outline" size="icon" className="w-14 h-14 rounded-full border-slate-200 text-slate-500 hover:text-[var(--kalfu-blue)] hover:border-[var(--kalfu-blue)]" onClick={() => window.open(instagram, '_blank')}>
                                 <Instagram size={24} />
                             </Button>
-                            <Button variant="outline" size="icon" className="w-14 h-14 rounded-full border-slate-200 text-slate-500 hover:text-[var(--kalfu-blue)] hover:border-[var(--kalfu-blue)]" onClick={() => window.open('#', '_blank')}>
+                            <Button variant="outline" size="icon" className="w-14 h-14 rounded-full border-slate-200 text-slate-500 hover:text-[var(--kalfu-blue)] hover:border-[var(--kalfu-blue)]" onClick={() => window.open(facebook, '_blank')}>
                                 <Facebook size={24} />
                             </Button>
                         </div>
                     </div>
 
                     <p className="mt-8 text-sm text-slate-400">
-                        Atendemos en Curicó, Región del Maule.
+                        {address}
                     </p>
                 </motion.div>
             </div>
