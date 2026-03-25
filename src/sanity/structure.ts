@@ -1,15 +1,48 @@
 import type {StructureResolver} from 'sanity/structure'
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
+import type {StructureResolver} from 'sanity/structure'
+
+// https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Blog')
+    .title('Kalfú Content')
     .items([
-      S.documentTypeListItem('post').title('Posts'),
-      S.documentTypeListItem('category').title('Categories'),
-      S.documentTypeListItem('author').title('Authors'),
+      S.listItem()
+        .title('Hero Section')
+        .id('singleton-hero')
+        .child(
+          S.document()
+            .schemaType('hero')
+            .documentId('singleton-hero')
+        ),
+      S.listItem()
+        .title('About Section')
+        .id('singleton-about')
+        .child(
+          S.document()
+            .schemaType('about')
+            .documentId('singleton-about')
+        ),
+      S.documentTypeListItem('service').title('Services'),
+      S.listItem()
+        .title('Team Gallery')
+        .id('singleton-team')
+        .child(
+          S.document()
+            .schemaType('team')
+            .documentId('singleton-team')
+        ),
+      S.listItem()
+        .title('Contact Info')
+        .id('singleton-contact')
+        .child(
+          S.document()
+            .schemaType('contact')
+            .documentId('singleton-contact')
+        ),
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (item) => item.getId() && !['post', 'category', 'author'].includes(item.getId()!),
+        (item) => item.getId() && !['hero', 'about', 'service', 'team', 'contact'].includes(item.getId()!),
       ),
     ])
