@@ -1,6 +1,6 @@
 "use client"
 import { useEffect } from "react"
-import "@n8n/chat/style.css";
+import "@/styles/n8n-chat.css";
 
 
 export function N8nChat() {

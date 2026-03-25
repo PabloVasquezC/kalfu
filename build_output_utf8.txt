@@ -1,0 +1,83 @@
+﻿
+> kalfu@0.1.0 build C:\Users\Cristian Metplastech\Desktop\kalfu
+> next build
+
+node.exe : ÔÜá Warning: Next.js inferred your 
+workspace root, but it may not be correct.
+En C:\nodejs\pnpm.ps1: 16 Carácter: 5
++     & "$basedir/node$exe"  
+"$basedir/node_modules/pnpm/bin/pnpm.cjs"  ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ÔÜá 
+Wa    rning: Ne...not be correct.:String) [], 
+RemoteE    xception
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ We detected multiple lockfiles and selected the 
+directory of C:\Users\Cristian 
+Metplastech\package-lock.json as the root 
+directory.
+ To silence this warning, set `turbopack.root` in 
+your Next.js config, or consider removing one of 
+the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/co
+nfig/next-config-js/turbopack#root-directory for 
+more information.
+ Detected additional lockfiles: 
+   * C:\Users\Cristian 
+Metplastech\Desktop\kalfu\pnpm-lock.yaml
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./Desktop/kalfu/src/app/studio/[[...tool]]/page.tsx
+:11:1
+Module not found: Can't resolve 
+'../../../../../sanity.config'
+[0m [90m  9 |[39m
+ [90m 10 |[39m [36mimport[39m { 
+[33mNextStudio[39m } [36mfrom[39m 
+[32m'next-sanity/studio'[39m
+[31m[1m>[22m[39m[90m 11 |[39m 
+[36mimport[39m config [36mfrom[39m 
+[32m'../../../../../sanity.config'[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22
+m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m
+[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m
+[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[
+1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[3
+9m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m
+^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^
+[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[
+31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[2
+2m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31
+m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m
+[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m
+[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[
+39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1
+m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39
+m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^
+[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[
+22m[39m[31m[1m^[22m[39m
+ [90m 12 |[39m
+ [90m 13 |[39m [36mexport[39m [36mconst[39m 
+dynamic [33m=[39m [32m'force-static'[39m
+ [90m 14 |[39m[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./Desktop/kalfu/src/app/studio/[[
+...tool]]/page.tsx:11:1)
+    at <unknown> 
+(https://nextjs.org/docs/messages/module-not-found)
+ÔÇëELIFECYCLEÔÇë Command failed with exit code 1.
