@@ -2,38 +2,38 @@ import {defineField, defineType} from 'sanity'
 
 export const contactType = defineType({
   name: 'contact',
-  title: 'Contact Information',
+  title: 'Información de Contacto',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
       type: 'string',
-      title: 'Title',
+      title: 'Título',
     }),
     defineField({
       name: 'description',
       type: 'text',
-      title: 'Description',
+      title: 'Descripción',
     }),
     defineField({
       name: 'whatsappNumber',
       type: 'string',
-      title: 'WhatsApp Number (e.g. +56912345678)',
+      title: 'Número de WhatsApp (Ej: 56912345678)',
     }),
     defineField({
       name: 'instagramUrl',
       type: 'string',
-      title: 'Instagram URL',
+      title: 'Enlace de Instagram',
     }),
     defineField({
       name: 'facebookUrl',
       type: 'string',
-      title: 'Facebook URL',
+      title: 'Enlace de Facebook',
     }),
     defineField({
       name: 'address',
       type: 'string',
-      title: 'Address',
+      title: 'Dirección (Curicó, etc.)',
     }),
   ],
 })

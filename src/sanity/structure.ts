@@ -5,10 +5,10 @@ import type {StructureResolver} from 'sanity/structure'
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Kalfú Content')
+    .title('Gestor de Contenido Kalfú')
     .items([
       S.listItem()
-        .title('Hero Section')
+        .title('Sección Principal (Hero)')
         .id('singleton-hero')
         .child(
           S.document()
@@ -16,16 +16,16 @@ export const structure: StructureResolver = (S) =>
             .documentId('singleton-hero')
         ),
       S.listItem()
-        .title('About Section')
+        .title('Nuestra Esencia (About)')
         .id('singleton-about')
         .child(
           S.document()
             .schemaType('about')
             .documentId('singleton-about')
         ),
-      S.documentTypeListItem('service').title('Services'),
+      S.documentTypeListItem('service').title('Nuestros Servicios (Terapias)'),
       S.listItem()
-        .title('Team Gallery')
+        .title('Galería de Equipo')
         .id('singleton-team')
         .child(
           S.document()
@@ -33,7 +33,7 @@ export const structure: StructureResolver = (S) =>
             .documentId('singleton-team')
         ),
       S.listItem()
-        .title('Contact Info')
+        .title('Información de Contacto')
         .id('singleton-contact')
         .child(
           S.document()

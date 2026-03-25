@@ -2,23 +2,23 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const teamType = defineType({
   name: 'team',
-  title: 'Team Section',
+  title: 'Galería de Equipo (Sección Team)',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
       type: 'string',
-      title: 'Title',
+      title: 'Título de la Sección',
     }),
     defineField({
       name: 'description',
       type: 'text',
-      title: 'Description',
+      title: 'Descripción de la Sección',
     }),
     defineField({
       name: 'images',
       type: 'array',
-      title: 'Team Images',
+      title: 'Imágenes del Equipo',
       of: [
         defineArrayMember({
           type: 'image',
@@ -29,7 +29,7 @@ export const teamType = defineType({
             defineField({
               name: 'alt',
               type: 'string',
-              title: 'Alternative text',
+              title: 'Texto Alternativo (alt)',
             }),
           ],
         }),

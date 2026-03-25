@@ -2,53 +2,53 @@ import {defineField, defineType} from 'sanity'
 
 export const heroType = defineType({
   name: 'hero',
-  title: 'Hero Section',
+  title: 'Sección Principal (Hero)',
   type: 'document',
   fields: [
     defineField({
       name: 'welcomeTag',
       type: 'string',
-      title: 'Welcome Tag',
+      title: 'Etiqueta de Bienvenida',
     }),
     defineField({
       name: 'titleLine1',
       type: 'string',
-      title: 'Title Line 1',
+      title: 'Título Línea 1',
     }),
     defineField({
       name: 'titleLine2',
       type: 'string',
-      title: 'Title Line 2',
+      title: 'Título Línea 2',
     }),
     defineField({
       name: 'description',
       type: 'text',
-      title: 'Description',
+      title: 'Descripción',
     }),
     defineField({
       name: 'primaryButtonText',
       type: 'string',
-      title: 'Primary Button Text',
+      title: 'Texto Botón Primario',
     }),
     defineField({
       name: 'primaryButtonLink',
       type: 'string',
-      title: 'Primary Button Link',
+      title: 'Enlace Botón Primario',
     }),
     defineField({
       name: 'secondaryButtonText',
       type: 'string',
-      title: 'Secondary Button Text',
+      title: 'Texto Botón Secundario',
     }),
     defineField({
       name: 'secondaryButtonLink',
       type: 'string',
-      title: 'Secondary Button Link',
+      title: 'Enlace Botón Secundario',
     }),
     defineField({
       name: 'image',
       type: 'image',
-      title: 'Hero Image',
+      title: 'Imagen Principal',
       options: {
         hotspot: true,
       },

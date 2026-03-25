@@ -16,6 +16,8 @@ import {
   CONTACT_QUERY 
 } from '@/sanity/lib/queries';
 
+export const revalidate = 5; // revalidate every 5 seconds
+
 export default async function Home() {
   // Fetch data from Sanity
   const [heroData, aboutData, servicesData, teamData, contactData] = await Promise.all([
