@@ -22,12 +22,15 @@ export const Hero = ({ data }: HeroProps) => {
     const imageUrl = data?.image ? urlFor(data.image).url() : "/logo-emblem.png";
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#f8fafc] via-[#e0f2fe] to-[#bae6fd]/30">
-            {/* Abstract Background Element */}
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[var(--kalfu-calypso)]/10 via-transparent to-transparent blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[var(--kalfu-blue)]/5 via-transparent to-transparent blur-3xl" />
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-12 md:py-20 px-4">
+            {/* Main Rounded Hero Container */}
+            <div className="absolute inset-4 md:inset-8 bg-gradient-to-br from-[#f0f9ff] via-[#e0f2fe] to-[#bae6fd]/40 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden -z-10 shadow-soft">
+                {/* Abstract Background Element */}
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[var(--kalfu-calypso)]/20 via-transparent to-transparent blur-3xl opacity-50" />
+                <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[var(--kalfu-blue)]/10 via-transparent to-transparent blur-3xl opacity-50" />
+            </div>
 
-            <div className="container-custom relative z-10 flex flex-col md:flex-row items-center gap-12 py-20 mt-20 md:mt-0">
+            <div className="container-custom relative z-10 flex flex-col md:flex-row items-center gap-12 mt-12 md:mt-0">
                 <div className="flex-1 text-center md:text-left">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -44,17 +47,17 @@ export const Hero = ({ data }: HeroProps) => {
                         <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
                             {description}
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+                        <div className="flex flex-col sm:flex-row items-center gap-5 justify-center md:justify-start">
                             <Link
                                 href={primaryButtonLink}
-                                className="group px-8 py-3.5 rounded-full bg-[var(--kalfu-blue)] text-white font-semibold shadow-lg shadow-blue-900/10 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center gap-2"
+                                className="group px-10 py-4 rounded-full bg-[var(--kalfu-blue)] text-white font-bold shadow-soft hover:shadow-strong hover:-translate-y-1 transition-all flex items-center gap-3 uppercase tracking-wider text-sm"
                             >
                                 {primaryButtonText}
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                             </Link>
                             <Link
                                 href={secondaryButtonLink}
-                                className="px-8 py-3.5 rounded-full bg-white text-[var(--kalfu-blue)] font-semibold shadow-sm border border-slate-100 hover:bg-slate-50 transition-colors"
+                                className="px-10 py-4 rounded-full bg-white text-[var(--kalfu-blue)] font-bold shadow-soft border border-slate-100 hover:bg-slate-50 hover:-translate-y-1 transition-all uppercase tracking-wider text-sm"
                             >
                                 {secondaryButtonText}
                             </Link>
@@ -68,7 +71,7 @@ export const Hero = ({ data }: HeroProps) => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative aspect-square md:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl bg-white p-4 rotate-2 transform hover:rotate-1 transition-transform duration-500"
+                        className="relative aspect-square md:aspect-[4/5] rounded-[3rem] overflow-hidden shadow-strong bg-white p-6 rotate-1 transform hover:rotate-0 transition-transform duration-700"
                     >
                         {/* Placeholder for an actual image */}
                         <div className="w-full h-full rounded-[1.5rem] bg-slate-50 flex items-center justify-center relative overflow-hidden group">

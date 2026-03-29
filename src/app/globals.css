@@ -22,9 +22,15 @@
   --color-kalfu-calypso: var(--kalfu-calypso);
   --color-kalfu-light: var(--kalfu-light);
 
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-raleway);
   --font-mono: var(--font-geist-mono);
   --font-handwriting: var(--font-dancing-script);
+
+  /* Design Tokens from Viveactivo */
+  --radius-xl: 1.5rem; /* ~24px */
+  --radius-2xl: 2rem; /* ~32px */
+  --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
 }
 
 /* Custom Utilities */

@@ -3,13 +3,15 @@ import { Facebook, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 
 export const Footer = () => {
     return (
-        <footer className="bg-[#0f172a] text-slate-300 py-16">
-            <div className="container-custom grid grid-cols-1 md:grid-cols-4 gap-12">
+        <footer className="bg-[#0f172a] text-slate-300 py-20 font-sans">
+            <div className="container-custom grid grid-cols-1 md:grid-cols-4 gap-16">
                 {/* Brand */}
-                <div className="space-y-4">
-                    <Link href="/" className="text-2xl font-bold text-white tracking-tight">Kalfú<span className="text-[var(--kalfu-calypso)]">.</span></Link>
-                    <p className="text-sm leading-relaxed text-slate-400">
-                        Espacio de sanación y bienestar integral. Reconectando con lo sagrado y el equilibrio emocional desde nuestras raíces.
+                <div className="space-y-6">
+                    <Link href="/" className="text-3xl font-bold text-white tracking-tighter">
+                        KALFÚ<span className="text-[var(--kalfu-calypso)]">.</span>
+                    </Link>
+                    <p className="text-sm leading-relaxed text-slate-400 font-medium">
+                        Espacio de sanación y bienestar integral en Curicó. Reconectando con lo sagrado y el equilibrio emocional desde nuestras raíces.
                     </p>
                 </div>
 

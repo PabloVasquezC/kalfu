@@ -26,10 +26,11 @@ export const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+            className={`fixed top-4 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'translate-y-0' : 'translate-y-0'
                 }`}
         >
-            <div className="container-custom flex items-center justify-between">
+            <div className={`container-custom transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-soft py-3 rounded-full' : 'bg-transparent py-4'
+                } flex items-center justify-between`}>
                 <Link href="/" className="relative h-12 w-32 md:w-40">
                     <img
                         src="/logo-text.png"
@@ -50,9 +51,9 @@ export const Navbar = () => {
                         </Link>
                     ))}
                     <Link
-                        href="https://wa.me/56912345678" // Placeholder, should be updated
+                        href="https://wa.me/56912345678"
                         target="_blank"
-                        className="px-5 py-2.5 rounded-full bg-[var(--kalfu-calypso)] text-white text-sm font-semibold hover:bg-opacity-90 transition-all shadow-lg shadow-[var(--kalfu-calypso)]/20"
+                        className="px-6 py-2 rounded-full bg-[var(--kalfu-blue)] text-white text-sm font-bold hover:bg-[var(--kalfu-calypso)] transition-all shadow-soft hover:shadow-strong uppercase tracking-wider"
                     >
                         Reservar
                     </Link>
@@ -74,7 +75,7 @@ export const Navbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden p-6 border-t"
+                        className="absolute top-full left-4 right-4 mt-2 bg-white shadow-strong md:hidden p-8 rounded-2xl border border-slate-100"
                     >
                         <div className="flex flex-col gap-4">
                             {navLinks.map((link) => (

@@ -49,18 +49,18 @@ export const Services = ({ data }: ServicesProps) => {
     };
 
     return (
-        <section id="services" className="py-24 bg-[var(--kalfu-light)]">
+        <section id="services" className="py-24 bg-[var(--kalfu-light)] font-sans">
             <div className="container-custom">
-                <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-[var(--kalfu-blue)] mb-6 font-[var(--font-handwriting)]">
+                <div className="text-center max-w-2xl mx-auto mb-20">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[var(--kalfu-blue)] mb-6 tracking-tight">
                         Nuestras Terapias
                     </h2>
-                    <p className="text-slate-600">
+                    <p className="text-slate-600 text-lg">
                         Cada sesión es única y adaptada a tus necesidades. Exploramos diferentes caminos para guiarte hacia tu bienestar integral.
                     </p>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+ 
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     {servicesList.map((service, index) => {
                         const IconComp = getIcon(service.icon);
                         return (
@@ -70,15 +70,15 @@ export const Services = ({ data }: ServicesProps) => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow group border border-transparent hover:border-[var(--kalfu-calypso)]/20"
+                                className="bg-white rounded-[2rem] p-10 shadow-soft hover:shadow-strong transition-all duration-300 group border border-transparent hover:border-[var(--kalfu-calypso)]/10 hover:-translate-y-2"
                             >
-                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 ${service.color}`}>
-                                    <IconComp size={28} />
+                                <div className={`w-16 h-16 rounded-[1.25rem] flex items-center justify-center mb-8 transition-transform group-hover:scale-110 ${service.color}`}>
+                                    <IconComp size={32} />
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-[var(--kalfu-blue)] transition-colors">
+                                <h3 className="text-2xl font-bold text-slate-800 mb-4 group-hover:text-[var(--kalfu-blue)] transition-colors">
                                     {service.title}
                                 </h3>
-                                <p className="text-slate-500 text-sm leading-relaxed">
+                                <p className="text-slate-500 leading-relaxed">
                                     {service.description}
                                 </p>
                             </motion.div>

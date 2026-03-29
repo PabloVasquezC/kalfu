@@ -74,18 +74,18 @@ export const Team = ({ data }: TeamProps) => {
     });
 
     return (
-        <section id="team" className="py-24 bg-[var(--kalfu-light)] overflow-hidden">
-            <div className="container-custom mb-12">
+        <section id="team" className="py-32 bg-[var(--kalfu-light)] overflow-hidden font-sans">
+            <div className="container-custom mb-16">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-[var(--kalfu-blue)] mb-6 font-[var(--font-handwriting)]">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[var(--kalfu-blue)] mb-6 tracking-tight">
                         {title}
                     </h2>
-                    <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                    <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">
                         {description}
                     </p>
                 </motion.div>
@@ -116,8 +116,8 @@ export const Team = ({ data }: TeamProps) => {
                     {baseImages.map((image, index) => (
                         <motion.div
                             key={index}
-                            className="w-[300px] h-[400px] relative rounded-2xl overflow-hidden shadow-lg flex-shrink-0"
-                            whileHover={{ scale: 1.02 }}
+                            className="w-[300px] h-[400px] relative rounded-[2.5rem] overflow-hidden shadow-soft flex-shrink-0"
+                            whileHover={{ scale: 1.05, rotate: -1 }}
                         >
                             <Image
                                 src={image}
