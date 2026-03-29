@@ -29,7 +29,7 @@ export default async function Home() {
   ]);
 
   return (
-    <main className="min-h-screen bg-[var(--kalfu-light)] font-sans selection:bg-[var(--kalfu-calypso)] selection:text-white">
+    <main className="min-h-screen bg-white font-sans">
       <Navbar />
       <Hero data={heroData} />
       <About data={aboutData} />
