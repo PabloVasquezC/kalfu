@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Flower2, Music, Sparkles, Hand } from 'lucide-react';
+import { Flower2, Music, Sparkles, Hand, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 interface ServicesProps {
     data?: any[];
@@ -10,9 +11,9 @@ interface ServicesProps {
 const defaultServices = [
     {
         title: "Reiki Usui",
-        description: "Canalización de energía vital universal para armonizar tus chakras, reducir el estrés y promover la autosanación física y emocional.",
+        description: "Canalizacion de energia vital universal para armonizar tus chakras, reducir el estres y promover la autosanacion fisica y emocional.",
         icon: 'Sparkles',
-        color: "bg-blue-50 text-blue-600"
+        color: "bg-cyan-50 text-[var(--kalfu-blue)]"
     },
     {
         title: "Flores de Bach",
@@ -22,13 +23,13 @@ const defaultServices = [
     },
     {
         title: "Sonoterapia",
-        description: "Inmersión en sonidos sagrados de cuencos tibetanos y gongs que inducen estados profundos de relajación y regeneración celular.",
+        description: "Inmersion en sonidos sagrados de cuencos tibetanos y gongs que inducen estados profundos de relajacion y regeneracion celular.",
         icon: 'Music',
         color: "bg-amber-50 text-amber-600"
     },
     {
-        title: "Masajes Terapéuticos",
-        description: "Técnicas manuales enfocadas en liberar tensiones musculares acumuladas y contracturas, renovando tu vitalidad corporal.",
+        title: "Masajes Terapeuticos",
+        description: "Tecnicas manuales enfocadas en liberar tensiones musculares acumuladas y contracturas, renovando tu vitalidad corporal.",
         icon: 'Hand',
         color: "bg-teal-50 text-teal-600"
     }
@@ -49,47 +50,55 @@ export const Services = ({ data }: ServicesProps) => {
     };
 
     return (
-        <section id="services" className="section-padding bg-white relative overflow-hidden">
-            {/* Background Decoration */}
-            <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[var(--kalfu-light)] to-transparent opacity-50" />
-            
-            <div className="container-custom relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-20">
-                    <h2 className="text-4xl md:text-6xl font-black text-slate-800 mb-6 tracking-tighter">
+        <section id="services" className="section-padding bg-slate-50 relative">
+            <div className="container-custom">
+                {/* Section Header - Viveactivo style */}
+                <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-[var(--kalfu-calypso)]/10 text-[var(--kalfu-dark)] text-sm font-semibold mb-4">
+                        Nuestros servicios
+                    </span>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
                         Nuestras <span className="text-[var(--kalfu-blue)]">Terapias</span>
-                        <div className="h-2 w-24 bg-[var(--kalfu-calypso)] mx-auto mt-4 rounded-full" />
                     </h2>
-                    <p className="text-slate-600 text-xl font-medium text-balance">
-                        Cada sesión es única y adaptada a tus necesidades. Exploramos diferentes caminos para guiarte hacia tu bienestar integral.
+                    <p className="text-slate-600 text-lg leading-relaxed">
+                        Cada sesion es unica y adaptada a tus necesidades. Exploramos diferentes caminos para guiarte hacia tu bienestar integral.
                     </p>
                 </div>
- 
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+                {/* Services Grid - Viveactivo card style */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {servicesList.map((service, index) => {
                         const IconComp = getIcon(service.icon);
                         return (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="group relative bg-gradient-to-br from-[var(--kalfu-blue)] to-[var(--kalfu-calypso)] rounded-[2.5rem] p-10 text-white shadow-soft hover:shadow-strong transition-all duration-500 hover:-translate-y-3 cursor-default overflow-hidden"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.4, delay: index * 0.1 }}
+                                className="group bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-slate-100 flex flex-col"
                             >
-                                {/* Decorative Arc - Viveactivo style */}
-                                <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-colors" />
-                                
-                                <div className="relative z-10">
-                                    <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                                        <IconComp size={32} className="text-white" />
-                                    </div>
-                                    <h3 className="text-2xl font-black mb-4 tracking-tight">
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-blue-50/90 leading-relaxed font-medium">
-                                        {service.description}
-                                    </p>
+                                {/* Icon */}
+                                <div className={`w-14 h-14 rounded-xl ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                                    <IconComp size={26} />
                                 </div>
+
+                                {/* Content */}
+                                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                                    {service.title}
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-grow">
+                                    {service.description}
+                                </p>
+
+                                {/* CTA Link - Viveactivo style */}
+                                <Link 
+                                    href="#contact"
+                                    className="inline-flex items-center gap-2 text-[var(--kalfu-blue)] font-semibold text-sm group-hover:gap-3 transition-all"
+                                >
+                                    Conoce mas
+                                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
                             </motion.div>
                         );
                     })}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar = () => {
@@ -21,82 +21,96 @@ export const Navbar = () => {
         { name: 'Inicio', href: '/' },
         { name: 'Nosotros', href: '#about' },
         { name: 'Servicios', href: '#services' },
+        { name: 'Equipo', href: '#team' },
         { name: 'Contacto', href: '#contact' },
     ];
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'pt-4 px-4 translate-y-0' : 'pt-0 px-0'
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                scrolled 
+                    ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100' 
+                    : 'bg-transparent'
+            }`}
         >
-            <div className={`container-custom transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-xl shadow-soft py-3 rounded-full border border-white/20 px-6 md:px-10' : 'bg-transparent py-6 overflow-hidden'
-                } flex items-center justify-between`}>
-                <Link href="/" className="relative h-12 w-32 md:w-40">
-                    <img
-                        src="/logo-text.png"
-                        alt="Kalfú Terapias Holísticas"
-                        className="object-contain h-full w-full"
-                    />
-                </Link>
-
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-10">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="relative text-sm font-semibold text-slate-600 hover:text-[var(--kalfu-blue)] transition-all flex flex-col items-center group"
-                        >
-                            {link.name}
-                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--kalfu-calypso)] opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2" />
-                        </Link>
-                    ))}
-                    <Link
-                        href="https://wa.me/56912345678"
-                        target="_blank"
-                        className="px-8 py-2.5 rounded-full bg-gradient-to-r from-[var(--kalfu-blue)] to-[var(--kalfu-calypso)] text-white text-xs font-bold hover:shadow-glow hover:-translate-y-0.5 transition-all uppercase tracking-widest shadow-soft"
-                    >
-                        Reservar
+            <div className="container-custom">
+                <div className="flex items-center justify-between h-16 md:h-20">
+                    {/* Logo */}
+                    <Link href="/" className="relative h-10 w-28 md:w-32">
+                        <img
+                            src="/logo-text.png"
+                            alt="Kalfu Terapias Holisticas"
+                            className="object-contain h-full w-full"
+                        />
                     </Link>
-                </div>
 
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-[var(--kalfu-blue)]"
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex items-center gap-8">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className="text-sm font-medium text-slate-600 hover:text-[var(--kalfu-blue)] transition-colors relative group"
+                            >
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--kalfu-blue)] group-hover:w-full transition-all duration-300" />
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* Desktop CTA */}
+                    <div className="hidden md:flex items-center gap-4">
+                        <Link
+                            href="https://wa.me/56912345678"
+                            target="_blank"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--kalfu-blue)] text-white text-sm font-semibold hover:bg-[var(--kalfu-dark)] transition-colors shadow-sm"
+                        >
+                            <Phone size={16} />
+                            Reservar
+                        </Link>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden p-2 text-slate-600 hover:text-[var(--kalfu-blue)] transition-colors"
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
+                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-4 right-4 mt-2 bg-white shadow-strong md:hidden p-8 rounded-2xl border border-slate-100"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="md:hidden bg-white border-t border-slate-100 shadow-lg"
                     >
-                        <div className="flex flex-col gap-4">
-                            {navLinks.map((link) => (
+                        <div className="container-custom py-4">
+                            <div className="flex flex-col gap-1">
+                                {navLinks.map((link) => (
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        className="px-4 py-3 text-slate-700 hover:text-[var(--kalfu-blue)] hover:bg-slate-50 rounded-lg font-medium transition-colors"
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                ))}
                                 <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-lg font-medium text-[var(--kalfu-blue)]"
+                                    href="https://wa.me/56912345678"
+                                    target="_blank"
+                                    className="mt-2 flex items-center justify-center gap-2 py-3 rounded-lg bg-[var(--kalfu-blue)] text-white font-semibold"
                                     onClick={() => setIsOpen(false)}
                                 >
-                                    {link.name}
+                                    <Phone size={18} />
+                                    Reservar Hora
                                 </Link>
-                            ))}
-                            <Link
-                                href="https://wa.me/56912345678"
-                                target="_blank"
-                                className="w-full text-center py-3 rounded-xl bg-[var(--kalfu-calypso)] text-white font-semibold"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Reservar Hora
-                            </Link>
+                            </div>
                         </div>
                     </motion.div>
                 )}
