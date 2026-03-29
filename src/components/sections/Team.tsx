@@ -74,7 +74,7 @@ export const Team = ({ data }: TeamProps) => {
     });
 
     return (
-        <section id="team" className="py-32 bg-[var(--kalfu-light)] overflow-hidden font-sans">
+        <section id="team" className="section-padding bg-white overflow-hidden font-sans">
             <div className="container-custom mb-16">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -82,10 +82,11 @@ export const Team = ({ data }: TeamProps) => {
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-[var(--kalfu-blue)] mb-6 tracking-tight">
-                        {title}
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-800 mb-6 tracking-tighter">
+                        Nuestro <span className="text-[var(--kalfu-blue)]">Equipo</span>
+                        <div className="h-2 w-24 bg-[var(--kalfu-calypso)] mx-auto mt-4 rounded-full" />
                     </h2>
-                    <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium text-balance">
                         {description}
                     </p>
                 </motion.div>
@@ -116,16 +117,18 @@ export const Team = ({ data }: TeamProps) => {
                     {baseImages.map((image, index) => (
                         <motion.div
                             key={index}
-                            className="w-[300px] h-[400px] relative rounded-[2.5rem] overflow-hidden shadow-soft flex-shrink-0"
-                            whileHover={{ scale: 1.05, rotate: -1 }}
+                            className="w-[300px] h-[400px] relative rounded-[3rem] overflow-hidden shadow-soft flex-shrink-0 group/card"
+                            whileHover={{ scale: 1.02, rotate: 1 }}
                         >
                             <Image
                                 src={image}
                                 alt={`Equipo Kalfu ${index + 1}`}
                                 fill
-                                className="object-cover pointer-events-none" // prevent image dragging ghost
+                                className="object-cover pointer-events-none transition-transform duration-700 group-hover/card:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--kalfu-blue)]/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--kalfu-blue)]/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                                <div className="w-full h-1 bg-white/40 rounded-full" />
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>

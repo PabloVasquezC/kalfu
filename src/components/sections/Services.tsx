@@ -49,13 +49,17 @@ export const Services = ({ data }: ServicesProps) => {
     };
 
     return (
-        <section id="services" className="py-24 bg-[var(--kalfu-light)] font-sans">
-            <div className="container-custom">
-                <div className="text-center max-w-2xl mx-auto mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold text-[var(--kalfu-blue)] mb-6 tracking-tight">
-                        Nuestras Terapias
+        <section id="services" className="section-padding bg-white relative overflow-hidden">
+            {/* Background Decoration */}
+            <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[var(--kalfu-light)] to-transparent opacity-50" />
+            
+            <div className="container-custom relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-20">
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-800 mb-6 tracking-tighter">
+                        Nuestras <span className="text-[var(--kalfu-blue)]">Terapias</span>
+                        <div className="h-2 w-24 bg-[var(--kalfu-calypso)] mx-auto mt-4 rounded-full" />
                     </h2>
-                    <p className="text-slate-600 text-lg">
+                    <p className="text-slate-600 text-xl font-medium text-balance">
                         Cada sesión es única y adaptada a tus necesidades. Exploramos diferentes caminos para guiarte hacia tu bienestar integral.
                     </p>
                 </div>
@@ -66,21 +70,26 @@ export const Services = ({ data }: ServicesProps) => {
                         return (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="bg-white rounded-[2rem] p-10 shadow-soft hover:shadow-strong transition-all duration-300 group border border-transparent hover:border-[var(--kalfu-calypso)]/10 hover:-translate-y-2"
+                                className="group relative bg-gradient-to-br from-[var(--kalfu-blue)] to-[var(--kalfu-calypso)] rounded-[2.5rem] p-10 text-white shadow-soft hover:shadow-strong transition-all duration-500 hover:-translate-y-3 cursor-default overflow-hidden"
                             >
-                                <div className={`w-16 h-16 rounded-[1.25rem] flex items-center justify-center mb-8 transition-transform group-hover:scale-110 ${service.color}`}>
-                                    <IconComp size={32} />
+                                {/* Decorative Arc - Viveactivo style */}
+                                <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-colors" />
+                                
+                                <div className="relative z-10">
+                                    <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                                        <IconComp size={32} className="text-white" />
+                                    </div>
+                                    <h3 className="text-2xl font-black mb-4 tracking-tight">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-blue-50/90 leading-relaxed font-medium">
+                                        {service.description}
+                                    </p>
                                 </div>
-                                <h3 className="text-2xl font-bold text-slate-800 mb-4 group-hover:text-[var(--kalfu-blue)] transition-colors">
-                                    {service.title}
-                                </h3>
-                                <p className="text-slate-500 leading-relaxed">
-                                    {service.description}
-                                </p>
                             </motion.div>
                         );
                     })}

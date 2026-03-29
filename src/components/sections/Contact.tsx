@@ -17,9 +17,9 @@ export const Contact = ({ data }: ContactProps) => {
     const address = data?.address || "Atendemos en Curicó, Región del Maule.";
 
     return (
-        <section id="contact" className="py-32 bg-white relative overflow-hidden font-sans px-4">
+        <section id="contact" className="section-padding bg-[var(--kalfu-light)] relative overflow-hidden px-4">
             {/* Main Rounded Contact Container */}
-            <div className="absolute inset-4 md:inset-8 bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe]/50 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden -z-10 shadow-soft" />
+            <div className="absolute inset-4 md:inset-10 bg-white rounded-[3rem] md:rounded-[5rem] overflow-hidden -z-10 shadow-strong border border-white/50" />
 
             <div className="container-custom relative z-10 text-center max-w-4xl mx-auto py-12">
                 <motion.div
@@ -28,20 +28,21 @@ export const Contact = ({ data }: ContactProps) => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold text-[var(--kalfu-blue)] mb-8 tracking-tighter">
+                    <h2 className="text-4xl md:text-7xl font-black text-slate-800 mb-8 tracking-tighter">
                         {title}
+                        <div className="h-2 w-24 bg-[var(--kalfu-calypso)] mx-auto mt-6 rounded-full" />
                     </h2>
-                    <p className="text-xl text-slate-600 mb-12 leading-relaxed max-w-2xl mx-auto font-medium">
+                    <p className="text-xl md:text-2xl text-slate-600 mb-12 leading-relaxed max-w-3xl mx-auto font-medium text-balance">
                         {description}
                     </p>
  
                      <div className="flex flex-col sm:flex-row items-center gap-6 justify-center">
                         <Button
                             size="lg"
-                            className="w-full sm:w-auto gap-4 text-base px-10 py-7 rounded-full bg-[var(--kalfu-blue)] hover:bg-[var(--kalfu-calypso)] text-white font-bold shadow-soft hover:shadow-strong transition-all uppercase tracking-wider"
+                            className="w-full sm:w-auto gap-4 text-sm px-12 py-8 rounded-full bg-gradient-to-r from-[var(--kalfu-blue)] to-[var(--kalfu-calypso)] hover:shadow-glow text-white font-black shadow-soft hover:shadow-strong transition-all uppercase tracking-widest border-none"
                             onClick={() => window.open(`https://wa.me/${whatsapp}`, '_blank')}
                         >
-                            <Send size={22} className="animate-pulse" />
+                            <Send size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             Escríbenos al WhatsApp
                         </Button>
  

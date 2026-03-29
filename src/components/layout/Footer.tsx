@@ -3,14 +3,15 @@ import { Facebook, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 
 export const Footer = () => {
     return (
-        <footer className="bg-[#0f172a] text-slate-300 py-20 font-sans">
+        <footer className="footer-padding bg-slate-900 text-slate-300 py-24 font-sans relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--kalfu-blue)] via-[var(--kalfu-calypso)] to-[var(--kalfu-blue)] opacity-50" />
             <div className="container-custom grid grid-cols-1 md:grid-cols-4 gap-16">
                 {/* Brand */}
-                <div className="space-y-6">
-                    <Link href="/" className="text-3xl font-bold text-white tracking-tighter">
-                        KALFÚ<span className="text-[var(--kalfu-calypso)]">.</span>
+                <div className="space-y-8">
+                    <Link href="/" className="inline-block transform hover:scale-105 transition-transform">
+                        <img src="/logo-text.png" alt="Kalfú" className="h-12 invert brightness-0" />
                     </Link>
-                    <p className="text-sm leading-relaxed text-slate-400 font-medium">
+                    <p className="text-base leading-relaxed text-slate-400 font-medium">
                         Espacio de sanación y bienestar integral en Curicó. Reconectando con lo sagrado y el equilibrio emocional desde nuestras raíces.
                     </p>
                 </div>
@@ -54,12 +55,12 @@ export const Footer = () => {
                             <span>contacto@kalfu.cl</span>
                         </li>
                     </ul>
-                    <div className="flex gap-4 mt-8">
-                        <Link href="#" className="p-2 rounded-full bg-white/5 hover:bg-[var(--kalfu-calypso)] hover:text-white transition-all">
-                            <Instagram size={20} />
+                    <div className="flex gap-4 mt-10">
+                        <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 hover:bg-[var(--kalfu-blue)] hover:text-white transition-all flex items-center justify-center border border-white/10 hover:border-transparent group">
+                            <Instagram size={22} className="group-hover:scale-110 transition-transform" />
                         </Link>
-                        <Link href="#" className="p-2 rounded-full bg-white/5 hover:bg-[var(--kalfu-calypso)] hover:text-white transition-all">
-                            <Facebook size={20} />
+                        <Link href="#" className="w-12 h-12 rounded-2xl bg-white/5 hover:bg-[var(--kalfu-blue)] hover:text-white transition-all flex items-center justify-center border border-white/10 hover:border-transparent group">
+                            <Facebook size={22} className="group-hover:scale-110 transition-transform" />
                         </Link>
                     </div>
                 </div>

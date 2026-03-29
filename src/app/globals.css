@@ -29,8 +29,15 @@
   /* Design Tokens from Viveactivo */
   --radius-xl: 1.5rem; /* ~24px */
   --radius-2xl: 2rem; /* ~32px */
-  --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-  --shadow-strong: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  --radius-3xl: 3rem; /* ~48px */
+  --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 20px 50px -10px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 20px rgba(34, 211, 238, 0.3);
+
+  /* Gradients based on Kalfu palette */
+  --gradient-primary: linear-gradient(135deg, var(--kalfu-calypso) 0%, var(--kalfu-blue) 100%);
+  --gradient-soft: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  --gradient-white: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
 /* Custom Utilities */
@@ -46,6 +53,29 @@
     padding-left: 2rem;
     padding-right: 2rem;
   }
+}
+
+@utility section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  @media (min-width: 1024px) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+@utility card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-strong);
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
 }
 
 body {
